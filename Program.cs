@@ -19,9 +19,9 @@ namespace TLS12TLS13NegotiateIssue
 
             // This connection works.
             await ServerAsyncSslHelper(clientSslProtocols: null, SslProtocols.Tls13);
-            // This connection works, but it causing the next conneetion fails. 
+            // This connection works, but it is causing the next connection fails. 
             await ServerAsyncSslHelper(clientSslProtocols: null, SslProtocols.Tls12);
-            // Fails altought it works ontry #1 and it is caused by Tls12 connection above.
+            // Fails altought it works on the try #1 and it is caused by the Tls12 connection above.
             await ServerAsyncSslHelper(clientSslProtocols: null, SslProtocols.Tls13);
         }
 
