@@ -14,15 +14,14 @@ namespace TLS12TLS13NegotiateIssue
     {
         static async Task Main(string[] args)
         {
-
             Console.WriteLine( typeof(SslStream).Assembly.Location);
 
             // This connection works.
-            await ServerAsyncSslHelper(clientSslProtocols: null, SslProtocols.Tls13);
+            await ServerAsyncSslHelper(clientSslProtocols: SslProtocols.None, SslProtocols.Tls13);
             // This connection works, but it is causing the next connection fails. 
-            await ServerAsyncSslHelper(clientSslProtocols: null, SslProtocols.Tls12);
+            await ServerAsyncSslHelper(clientSslProtocols: SslProtocols.None, SslProtocols.Tls12);
             // Fails altought it works on the try #1 and it is caused by the Tls12 connection above.
-            await ServerAsyncSslHelper(clientSslProtocols: null, SslProtocols.Tls13);
+            await ServerAsyncSslHelper(clientSslProtocols: SslProtocols.None, SslProtocols.Tls13);
         }
 
         private static (Socket clientSocket, Socket serverSocket) GetConnectedTcpStreams()
